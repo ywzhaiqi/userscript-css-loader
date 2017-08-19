@@ -7,6 +7,11 @@ Useful for loading a simple CSS file without embedding both `css-loader` and `st
 
 `npm install --save-dev userscript-css-loader`
 
+## 修改说明
+
+1. 增加判断 `GM_addStyle` 不存在的情况
+
+
 ## Usage
 
 ```js

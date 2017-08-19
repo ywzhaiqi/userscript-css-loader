@@ -1,5 +1,16 @@
+function gmPatch() {
+    if (typeof GM_addStyle == 'undefined') {
+        GM_addStyle = function(css) {
+            var style = document.createElement('style');
+            style.innerText = css;
+            document.head.appendChild(style);
+        }
+    }
+}
+
 module.exports = function(content) {
     this.cacheable && this.cacheable();
-    return 'GM_addStyle(' + JSON.stringify(content) + ')';
+    return '(' + gmPatch.toString() + ')();\n' +
+        'GM_addStyle(' + JSON.stringify(content) + ')';
 }
 module.exports.seperable = true;
